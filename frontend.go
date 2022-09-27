@@ -34,6 +34,7 @@ type Frontend struct {
 	emptyQueryResponse              EmptyQueryResponse
 	errorResponse                   ErrorResponse
 	functionCallResponse            FunctionCallResponse
+	lsnResponse                     LsnResponse
 	noData                          NoData
 	noticeResponse                  NoticeResponse
 	notificationResponse            NotificationResponse
@@ -119,6 +120,8 @@ func (f *Frontend) Receive() (BackendMessage, error) {
 		msg = &f.emptyQueryResponse
 	case 'K':
 		msg = &f.backendKeyData
+	case 'L':
+		msg = &f.lsnResponse
 	case 'n':
 		msg = &f.noData
 	case 'N':
